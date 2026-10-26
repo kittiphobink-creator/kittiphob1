@@ -1,0 +1,306 @@
+/* --- ตั้งค่าเริ่มต้น --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+/* --- ปรับชุดสีธีมฟ้ามืด นุ่มลึก สบายตา (Dark Midnight Theme) --- */
+:root {
+    --primary: #5c95be;        /* ฟ้าสเตนเลสสว่างนวลสำหรับหัวข้อ */
+    --primary-light: #1e3343;  /* สีฟ้ามืดนุ่มๆ สำหรับ Badge */
+    --accent: #3a739d;         /* สีฟ้าคลาสสิกเน้นจุดสำคัญ */
+    --bg-main: #0f171e;        /* พื้นหลังมืด โทน Midnight Dark ไม่สว่าง ไม่แสบตา */
+    --card-bg: #15222e;        /* สีการ์ดเข้มพรีเมียม */
+    --text-dark: #e6f0f7;      /* ตัวหนังสือสีขาวนวล อ่านง่ายบนพื้นหลังมืด */
+    --text-muted: #95ab2;     /* สีข้อความรองนวลตา */
+    --border-color: #233646;   /* เส้นขอบสีมืดกลมกลืน */
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.75;
+    min-height: 100vh;
+}
+
+/* --- ส่วนหัวเว็บ (Header Box) --- */
+.header-box {
+    background: linear-gradient(135deg, #091017 0%, #172a38 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 65px 20px 50px;
+    border-bottom: 4px solid var(--accent);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+#welcome {
+    font-size: 32px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- กรอบเนื้อหาหลักตรงกลาง --- */
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 24px;
+}
+
+/* --- ส่วนเกริ่นนำ --- */
+.intro {
+    margin-bottom: 45px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.intro::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: var(--accent);
+    margin: 20px auto 0;
+    border-radius: 3px;
+}
+
+.intro h2 {
+    font-size: 26px;
+    color: #79add2;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.intro p {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* --- รายการการ์ดเรียงแนวนอน (Grid Layout) --- */
+.pigeon-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 900px) {
+    .pigeon-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- การ์ดแสดงประเภทเครื่องเขียนแต่ละชิ้น --- */
+.pigeon-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 100%;
+}
+
+.pigeon-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    border-color: #3b5a73;
+}
+
+/* ไฮไลต์พิเศษสำหรับชิ้นที่ชอบที่สุด ⭐ */
+.highlight-card {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, #182836 0%, #121e29 100%);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 900px) {
+    .highlight-card {
+        grid-column: span 2;
+    }
+}
+
+.badge {
+    display: inline-block;
+    background: var(--primary-light);
+    color: #8bbade;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+    border: 1px solid #2d4a61;
+}
+
+.highlight-badge {
+    background: #254056;
+    color: #a3d2f7;
+    border: 1px solid #3d688a;
+}
+
+.pigeon-title {
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* เลย์เอาต์ภายในตัวการ์ด */
+.pigeon-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+@media (min-width: 580px) {
+    .pigeon-content {
+        flex-direction: row;
+        align-items: stretch;
+    }
+}
+
+/* รูปภาพเครื่องเขียน */
+.pigeon-img {
+    width: 100%;
+    max-width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background-color: #1c2d3d;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.pigeon-card:hover .pigeon-img {
+    transform: scale(1.02);
+}
+
+@media (min-width: 580px) {
+    .pigeon-img {
+        width: 190px;
+        height: auto;
+        min-height: 160px;
+    }
+
+    .highlight-card .pigeon-img {
+        width: 250px;
+        height: auto;
+    }
+}
+
+/* กล่องข้อความรายละเอียด */
+.pointer {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+}
+
+.pointer p {
+    font-size: 14px;
+    color: #cde0ed;
+    text-align: justify;
+    background: #0f1922;
+    padding: 18px 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    line-height: 1.75;
+    width: 100%;
+}
+
+.highlight-card .pointer p {
+    font-size: 15px;
+    border-left-color: #5ba3d0;
+    background: #0c151c;
+}
+
+/* --- ข้อความสรุปด้านล่าง --- */
+.mix {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 26px 32px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dark);
+    border: 2px dashed #2b4559;
+    margin: 55px 0 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* --- ส่วนท้ายเว็บ (Footer) --- */
+.footer {
+    background: #080d12;
+    color: #b0c9dd;
+    padding: 55px 20px 38px;
+    margin-top: 65px;
+    border-top: 4px solid var(--accent);
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 36px;
+}
+
+.footer-col h4 {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #7296b3;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+    color: #bce0fb;
+}
+
+.footer-col.info {
+    text-align: right;
+}
+
+.footer-col .social {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footer-col .credit {
+    font-size: 12px;
+    color: #55728a;
+    letter-spacing: 1px;
+}
