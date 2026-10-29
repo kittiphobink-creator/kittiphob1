@@ -6,20 +6,26 @@
     font-family: 'Prompt', sans-serif;
 }
 
-/* --- ปรับชุดสีธีมฟ้ามืด นุ่มลึก สบายตา (Dark Midnight Theme) --- */
+/* --- ปรับชุดสีตามภาพตัวอย่าง (Light Minimalist & Dot Grid) --- */
 :root {
-    --primary: #5c95be;        /* ฟ้าสเตนเลสสว่างนวลสำหรับหัวข้อ */
-    --primary-light: #1e3343;  /* สีฟ้ามืดนุ่มๆ สำหรับ Badge */
-    --accent: #3a739d;         /* สีฟ้าคลาสสิกเน้นจุดสำคัญ */
-    --bg-main: #0f171e;        /* พื้นหลังมืด โทน Midnight Dark ไม่สว่าง ไม่แสบตา */
-    --card-bg: #15222e;        /* สีการ์ดเข้มพรีเมียม */
-    --text-dark: #e6f0f7;      /* ตัวหนังสือสีขาวนวล อ่านง่ายบนพื้นหลังมืด */
-    --text-muted: #95ab2;     /* สีข้อความรองนวลตา */
-    --border-color: #233646;   /* เส้นขอบสีมืดกลมกลืน */
+    --bg-main: #FCFAEF; /* สีพื้นหลังครีมสว่างตามภาพ */
+    --card-bg: #FFFFFF;
+    --text-dark: #222222;
+    --text-muted: #555555;
+    --border-color: #E5E5E5;
+    --badge-bg: #F0F0F0;
+    --badge-text: #333333;
+    
+    /* สีพาสเทลตกแต่งอ้างอิงจากภาพ */
+    --accent-pink: #FF477E; 
+    --accent-purple: #B19CD9;
 }
 
 body {
     background-color: var(--bg-main);
+    /* สร้างพื้นหลังลายจุด (Dot Grid) แบบในภาพตัวอย่าง */
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 24px 24px;
     color: var(--text-dark);
     line-height: 1.75;
     min-height: 100vh;
@@ -27,61 +33,48 @@ body {
 
 /* --- ส่วนหัวเว็บ (Header Box) --- */
 .header-box {
-    background: linear-gradient(135deg, #091017 0%, #172a38 100%);
-    color: #ffffff;
+    background: transparent;
+    color: var(--text-dark);
     text-align: center;
-    padding: 65px 20px 50px;
-    border-bottom: 4px solid var(--accent);
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    padding: 50px 20px 20px;
 }
 
 #welcome {
-    font-size: 32px;
-    letter-spacing: 4px;
-    font-weight: 700;
-    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: var(--text-muted);
     text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* --- กรอบเนื้อหาหลักตรงกลาง --- */
 .container {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 20px auto 50px;
     padding: 0 24px;
 }
 
 /* --- ส่วนเกริ่นนำ --- */
 .intro {
-    margin-bottom: 45px;
+    margin-bottom: 60px;
     text-align: center;
-    position: relative;
-    padding-bottom: 20px;
-}
-
-.intro::after {
-    content: "";
-    display: block;
-    width: 70px;
-    height: 3px;
-    background: var(--accent);
-    margin: 20px auto 0;
-    border-radius: 3px;
 }
 
 .intro h2 {
-    font-size: 26px;
-    color: #79add2;
-    margin-bottom: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-size: 52px;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 1.2;
 }
 
 .intro p {
-    font-size: 16px;
-    color: var(--text-muted);
-    max-width: 650px;
+    font-size: 20px;
+    color: var(--text-dark);
+    max-width: 800px;
     margin: 0 auto;
+    font-weight: 300;
 }
 
 /* --- รายการการ์ดเรียงแนวนอน (Grid Layout) --- */
@@ -100,27 +93,24 @@ body {
 /* --- การ์ดแสดงประเภทเครื่องเขียนแต่ละชิ้น --- */
 .pigeon-card {
     background: var(--card-bg);
-    border-radius: 18px;
-    padding: 28px;
+    border-radius: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     border: 1px solid var(--border-color);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
     height: 100%;
 }
 
 .pigeon-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-    border-color: #3b5a73;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* ไฮไลต์พิเศษสำหรับชิ้นที่ชอบที่สุด ⭐ */
 .highlight-card {
-    border: 2px solid var(--accent);
-    background: linear-gradient(180deg, #182836 0%, #121e29 100%);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--accent-purple);
 }
 
 @media (min-width: 900px) {
@@ -131,29 +121,26 @@ body {
 
 .badge {
     display: inline-block;
-    background: var(--primary-light);
-    color: #8bbade;
-    font-size: 13px;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    font-size: 12px;
     font-weight: 600;
-    padding: 6px 16px;
-    border-radius: 30px;
-    margin-bottom: 14px;
-    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
     align-self: flex-start;
-    border: 1px solid #2d4a61;
 }
 
 .highlight-badge {
-    background: #254056;
-    color: #a3d2f7;
-    border: 1px solid #3d688a;
+    background: var(--accent-pink);
+    color: #FFFFFF;
 }
 
 .pigeon-title {
-    font-size: 20px;
+    font-size: 24px;
     color: var(--text-dark);
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* เลย์เอาต์ภายในตัวการ์ด */
@@ -177,9 +164,8 @@ body {
     max-width: 100%;
     height: 190px;
     object-fit: cover;
-    background-color: #1c2d3d;
-    border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    background-color: #F5F5F5;
+    border-radius: 12px;
     display: block;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -191,13 +177,13 @@ body {
 
 @media (min-width: 580px) {
     .pigeon-img {
-        width: 190px;
+        width: 200px;
         height: auto;
         min-height: 160px;
     }
 
     .highlight-card .pigeon-img {
-        width: 250px;
+        width: 260px;
         height: auto;
     }
 }
@@ -210,61 +196,84 @@ body {
 }
 
 .pointer p {
-    font-size: 14px;
-    color: #cde0ed;
-    text-align: justify;
-    background: #0f1922;
-    padding: 18px 20px;
+    font-size: 15px;
+    color: var(--text-muted);
+    text-align: left;
+    background: #FDFDFD;
+    padding: 20px;
     border-radius: 12px;
-    border-left: 4px solid var(--accent);
-    line-height: 1.75;
+    border: 1px solid var(--border-color);
+    line-height: 1.6;
     width: 100%;
 }
 
 .highlight-card .pointer p {
-    font-size: 15px;
-    border-left-color: #5ba3d0;
-    background: #0c151c;
+    background: #F8F5FF;
+    border-color: #E2D6FF;
 }
 
 /* --- ข้อความสรุปด้านล่าง --- */
 .mix {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 26px 32px;
+    background: transparent;
+    padding: 20px;
     text-align: center;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 18px;
+    font-weight: 400;
     color: var(--text-dark);
-    border: 2px dashed #2b4559;
-    margin: 55px 0 0;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    margin: 40px 0 0;
 }
 
-/* --- ส่วนท้ายเว็บ (Footer) --- */
 .footer {
-    background: #080d12;
-    color: #b0c9dd;
-    padding: 55px 20px 38px;
-    margin-top: 65px;
-    border-top: 4px solid var(--accent);
+    background-color: var(--card-bg);
+    /* พื้นผิว Texture กระดาษแบบนุ่มนวล */
+    background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, #FCFAEF, #F7F5EA);
+    color: var(--text-dark);
+    padding: 60px 24px 40px;
+    border-top: 2px dashed #E0DDD0;
+    margin-top: 60px;
+    position: relative;
 }
 
+/* ตารางแสดงการ์ด Footer */
 .footer-grid {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
+/* จัดกรอบให้แต่ละหัวข้อ (Footer Cards) */
+.footer-col {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-col:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-color: #DCD6CD;
+}
+
+/* หัวข้อประจำกรอบ */
 .footer-col h4 {
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 2px;
-    margin-bottom: 18px;
-    color: #ffffff;
-    font-weight: 600;
+    margin-bottom: 16px;
+    color: #4A4A4A;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--bg-main);
+    display: inline-block;
 }
 
 .footer-col ul {
@@ -275,32 +284,54 @@ body {
     margin-bottom: 10px;
 }
 
+.footer-col ul li:last-child {
+    margin-bottom: 0;
+}
+
 .footer-col a {
-    color: #7296b3;
+    color: var(--text-muted);
     text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.8px;
-    transition: color 0.2s ease;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    display: inline-block;
 }
 
 .footer-col a:hover {
-    color: #bce0fb;
+    color: var(--text-dark);
+    transform: translateX(4px); /* เอฟเฟกต์เลื่อนขวาเบาๆ เวลาชี้ */
 }
 
+/* กรอบฝั่งขวา (Social & Credit) */
 .footer-col.info {
-    text-align: right;
+    text-align: left; /* ปรับชิดซ้ายให้เข้าชุดกับกรอบอื่น */
+    background: #FAF8F2; /* เปลี่ยนสีพื้นหลังเพิ่มมิติเล็กน้อย */
+    border-color: #EFEADF;
 }
 
 .footer-col .social {
     font-size: 14px;
     font-weight: 600;
-    letter-spacing: 2px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    color: var(--text-dark);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
 }
 
 .footer-col .credit {
     font-size: 12px;
-    color: #55728a;
-    letter-spacing: 1px;
+    color: #888888;
+    line-height: 1.5;
+    background: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+}
+
+/* รองรับการแสดงผลบนแท็บเล็ตและมือถือ */
+@media (max-width: 850px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 }
